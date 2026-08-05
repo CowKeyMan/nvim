@@ -1,0 +1,50 @@
+snippet std "Import cout" b
+#include <iostream>
+#include <vector>
+using std::cerr;
+using std::cout;
+using std::endl;
+using std::vector;
+template <class T>
+auto print_vec(const vector<T> &v) {
+  cout << "---------------------" << endl;
+  for (auto e : v) { cout << e << " "; }
+  cout << endl << "---------------------" << endl;
+}
+
+endsnippet
+
+snippet he "Add header requirements" b
+`!p
+from pathlib import Path
+
+
+def capitalise(s: str) -> str:
+		ret = ""
+		for i, c in enumerate(s):
+				if c.isupper() and i > 0:
+						ret += f"_{c}"
+				elif c == '.':
+						ret += "_"
+				else:
+						ret += c
+		return ret.upper()
+
+
+if not snip.c:
+	filename = snip.fn
+	capitalised = capitalise(filename)
+	snip.rv=(f"""
+#ifndef {capitalised}
+#define {capitalised}
+
+/**
+ * @file {filename}
+ * @brief
+ */
+
+#endif
+ """[1:])
+
+`
+endsnippet

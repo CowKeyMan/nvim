@@ -1,0 +1,6 @@
+require("setup.key_mappings")
+require("setup.sets")
+require("setup.cmds")
+require("setup.commands")
+require("setup.lsp")
+require("setup.new_pc")

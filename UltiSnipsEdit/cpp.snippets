@@ -1,0 +1,140 @@
+snippet std "Import cout" b
+#include <algorithm>
+#include <iostream>
+#include <limits>
+#include <span>
+#include <vector>
+using std::cerr;
+using std::cout;
+using std::endl;
+using std::vector;
+template <class T>
+auto print_vec(
+  const vector<T> &v, uint64_t limit = std::numeric_limits<uint64_t>::max()
+) {
+  cout << "---------------------" << endl;
+  for (int i = 0; i < std::min(limit, v.size()); ++i) {
+    cout << v[i] << " "; }
+  cout << endl << "---------------------" << endl;
+}
+
+endsnippet
+
+snippet stdio "Import cout2" b
+#include <iostream>
+using std::cerr;
+using std::cout;
+using std::endl;
+
+endsnippet
+
+snippet he "Add header requirements" b
+`!p
+from pathlib import Path
+
+
+def capitalise(s: str) -> str:
+		ret = ""
+		for i, c in enumerate(s):
+				if c.isupper() and i > 0:
+						ret += f"_{c}"
+				elif c == '.':
+						ret += "_"
+				else:
+						ret += c
+		return ret.upper()
+
+
+if not snip.c:
+	filename = snip.fn
+	capitalised = capitalise(filename)
+	snip.rv=(f"""
+#pragma once
+
+/**
+ * @file {filename}
+ * @brief
+ */
+
+class {filename} {{
+
+public:
+
+}};
+"""[1:-1])
+
+`
+endsnippet
+
+snippet gd "Godot class header" b
+`!p
+from pathlib import Path
+
+
+def capitalise(s: str) -> str:
+		ret = ""
+		for i, c in enumerate(s):
+				if c.isupper() and i > 0:
+						ret += f"_{c}"
+				elif c == '.':
+						ret += "_"
+				else:
+						ret += c
+		return ret.upper()
+
+
+if not snip.c:
+	filename = snip.fn
+
+	capitalised = capitalise(filename)
+	name = ''.join(filename.split('.')[:-1])
+	snip.rv=f"""
+#ifndef {capitalised}
+#define {capitalised}
+
+/**
+ * @file {filename}
+ * @brief
+ */
+
+#include "tools/GdTools.h"
+
+namespace godot {{
+
+class {name}: public Node {{
+  GDCLASS({name}, Node);
+
+public:
+  static void _bind_methods() {{}}
+}};
+
+}}  // namespace godot
+
+#endif
+"""[1: -1]
+
+`
+endsnippet
+
+snippet gdc "Godot class" b
+`!p
+from pathlib import Path
+
+if not snip.c:
+	filename = snip.fn
+	name = ''.join(filename.split('.')[:-1])
+	header = name + ".h"
+	snip.rv=f"""
+#include "{header}"
+#include "tools/GdTools.h"
+
+namespace godot {{
+
+{name}::
+
+}} // namespace godot
+
+"""[1: -1]
+
+`
+endsnippet
