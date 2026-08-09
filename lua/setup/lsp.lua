@@ -19,7 +19,7 @@ vim.lsp.enable('slangd')
 
 vim.keymap.set({"n"}, "gh", ":LspClangdSwitchSourceHeader<CR>")
 vim.keymap.set({"i"}, "<c-k>", "<c-x><c-o>")
-vim.keymap.set({"i"}, "<s-k>", vim.lsp.semantic_tokens.force_refresh)
+vim.keymap.set({"n"}, "<s-k>", vim.lsp.semantic_tokens.force_refresh)
 vim.keymap.set({"n"}, "ml", vim.diagnostic.open_float)
 vim.keymap.set({"n"}, "ql", vim.lsp.buf.signature_help)
 vim.keymap.set({"n"}, "qh", vim.lsp.buf.hover)
