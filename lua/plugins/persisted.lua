@@ -1,6 +1,6 @@
 -- save and restore vim
 --
-vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+-- vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 
 return {
   "olimorris/persisted.nvim",
@@ -8,7 +8,7 @@ return {
   opts = {
     -- 1. Main configuration behavior
     autostart = true,
-    save_dir = vim.fn.stdpath("data") .. "/my_custom_sessions/" .. vim.loop.os_uname().sysname,
+    save_dir = ".vim_sessions/" .. vim.loop.os_uname().sysname .. "/",
 
     -- 2. DYNAMIC AUTOLOAD:
     -- Only auto-load the session if zero command line arguments are given.
