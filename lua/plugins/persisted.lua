@@ -1,7 +1,4 @@
 -- save and restore vim
---
--- vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
-
 return {
   "olimorris/persisted.nvim",
   lazy = false,
